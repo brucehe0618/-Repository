@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小鸡蛋 AI 晨报：Agent 正从会回答走向会交付</title>
+  <meta name="description" content="从 Chrome Skills、扣子 2.5 到表格 Agent，拆解 AI 正如何从聊天走向任务交付。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="小鸡蛋 AI 晨报" />
+  <meta property="og:title" content="小鸡蛋 AI 晨报：Agent 正从会回答走向会交付" />
+  <meta property="og:description" content="从 Chrome Skills、扣子 2.5 到表格 Agent，拆解 AI 正如何从聊天走向任务交付。" />
+  <meta property="og:image" content="https://brucehe0618.github.io/-Repository/2026-04-15/cover.png" />
+  <meta property="og:url" content="https://brucehe0618.github.io/-Repository/2026-04-15/" />
+  <meta property="article:published_time" content="2026-04-15T09:59:00+08:00" />
+  <meta property="article:author" content="小鸡蛋" />
+  <link rel="canonical" href="https://brucehe0618.github.io/-Repository/2026-04-15/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="小鸡蛋 AI 晨报：Agent 正从会回答走向会交付" />
+  <meta name="twitter:description" content="从 Chrome Skills、扣子 2.5 到表格 Agent，拆解 AI 正如何从聊天走向任务交付。" />
+  <meta name="twitter:image" content="https://brucehe0618.github.io/-Repository/2026-04-15/cover.png" />
+  <meta name="theme-color" content="#111827" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card-strong: rgba(255,255,255,.09);
+      --line: rgba(255,255,255,.12);
+      --text: #ecf3ff;
+      --muted: #a9b4cc;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --good: #34d399;
+      --warn: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34,211,238,.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(139,92,246,.18), transparent 30%),
+        linear-gradient(180deg, #0a0f1e, #10192f 45%, #0d1425);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 64px; }
+    .hero {
+      padding: 22px 20px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(139,92,246,.18), rgba(34,211,238,.08));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.24);
+    }
+    .kicker { color: #d9ccff; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 8px 0 12px; font-size: 30px; line-height: 1.2; }
+    .sub { color: var(--muted); font-size: 14px; }
+    .chips, .meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+    .chip {
+      font-size: 12px; color:#e6faff; padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.07);
+    }
+    .grid { display:grid; grid-template-columns:1fr; gap:16px; margin-top:18px; }
+    @media (min-width: 860px) {
+      .grid-2 { grid-template-columns: 1.1fr .9fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+    .card {
+      border:1px solid var(--line); border-radius:22px; padding:18px 16px;
+      background: var(--card); box-shadow: 0 14px 40px rgba(0,0,0,.18);
+    }
+    .card.strong { background: var(--card-strong); }
+    h2 { margin:0 0 12px; font-size:20px; }
+    h3 { margin:0 0 8px; font-size:16px; }
+    p { margin: 8px 0; }
+    .muted { color: var(--muted); }
+    .list { display:grid; gap:12px; }
+    .item {
+      padding:14px; border-radius:16px; background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .badge { display:inline-block; font-size:11px; padding:4px 8px; border-radius:999px; margin-bottom:8px; }
+    .b-purple { background:rgba(139,92,246,.18); color:#e9ddff; }
+    .b-cyan { background:rgba(34,211,238,.16); color:#d9fbff; }
+    .b-green { background:rgba(52,211,153,.16); color:#ddfff2; }
+    .b-yellow { background:rgba(245,158,11,.16); color:#fff1d7; }
+    ul { padding-left: 18px; margin: 8px 0; }
+    li { margin: 6px 0; }
+    a { color: #9fe8ff; text-decoration: none; }
+    .top3 li { margin-bottom: 10px; }
+    .footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
+    .quote {
+      padding: 14px 16px; border-left: 3px solid var(--accent-2); background: rgba(34,211,238,.08);
+      border-radius: 14px; color:#e7fcff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="kicker">小鸡蛋 · 每日 8:00 深度晨报</div>
+      <h1>小鸡蛋 AI 晨报：Agent 正从会回答走向会交付</h1>
+      <div class="sub">从 Chrome Skills、扣子 2.5 到表格 Agent，拆解 AI 正如何从聊天走向任务交付。｜更新时间：2026-04-15 09:59 CST</div>
+      <div class="chips">
+        <span class="chip">AI 大模型 / 产品</span>
+        <span class="chip">Agent 动态</span>
+        <span class="chip">GitHub 高星项目</span>
+        <span class="chip">公司 / 融资</span>
+        <span class="chip">固定模板</span>
+      </div>
+    </section>
+
+    <section class="grid grid-2">
+      <div class="card strong">
+        <h2>今日最值得看 3 条</h2>
+        <ol class="top3">
+          <li><strong>Google 把 Gemini 工作流直接塞进 Chrome，推出 Skills。</strong><br>这说明浏览器正在变成 Agent 的主战场。对普通用户来说，AI 不再只是“问答”，而是可复用、可点一下就执行的工作流；对产品侧来说，这会直接抬高“任务闭环率”而不只是模型回答质量。</li>
+          <li><strong>字节扣子 2.5 / 阿里千问表格 Agent，国内 Agent 正从聊天走向交付结果。</strong><br>一个方向是“平台化 Agent OS”，另一个方向是“高频办公 Agent”。这比单纯模型升级更值得盯，因为它离真实商业化更近。</li>
+          <li><strong>Meta 联合 Broadcom 做多代 AI 芯片，超大厂开始进一步锁定自有基础设施。</strong><br>这不是简单的硬件新闻，而是成本、供给、安全和推理吞吐的长期战略竞争。未来 AI 价格战和能力战，都会越来越深地绑定基础设施。</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>小鸡蛋一句判断</h2>
+        <div class="quote">今天最清晰的信号不是“又出了一个更强模型”，而是：<strong>AI 正快速从“会回答”转向“会执行、会交付、可复用”</strong>。真正值得追的，不只是模型榜单，而是谁先把 Agent、工作流、记忆、工具调用和分发入口连成闭环。</div>
+        <h3 style="margin-top:14px">一句话机会点</h3>
+        <p>如果你要做内容、产品或副业，优先盯 <strong>“浏览器内工作流 + 办公 Agent + 持久记忆”</strong> 这三条线，它们最容易在未来 1-3 个月内变成真实用户需求。</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card strong">
+        <h2>一、AI 大模型 / 产品</h2>
+        <div class="list">
+          <div class="item">
+            <span class="badge b-cyan">全球 · 产品入口升级</span>
+            <h3>Google 在 Chrome 中推出 Gemini Skills</h3>
+            <p class="muted">来源：The Verge / Google Blog｜时间：2026-04-14 ~ 2026-04-15</p>
+            <p><strong>发生了什么：</strong>用户可以把 Gemini 提示词保存为可重复调用的浏览器内“技能”，在不同页面和标签页上快速执行固定工作流。</p>
+            <p><strong>为什么重要：</strong>浏览器是天然的 Agent 操作层。谁控制“打开网页→读取内容→触发动作→返回结果”的入口，谁就更接近下一阶段的 AI 分发权。</p>
+            <p><strong>你该怎么看：</strong>这类能力短期内会极大提高知识工作者的粘性。以后“提示词技巧”会逐步产品化为“工作流模板”，内容创作者和独立开发者都能围绕模板做分发。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-purple">全球 · 图像模型商业化</span>
+            <h3>微软发布 MAI-Image-2-Efficient，主打更快更便宜</h3>
+            <p class="muted">来源：The Verge｜时间：2026-04-15</p>
+            <p><strong>发生了什么：</strong>微软把新版图像模型定位为企业生产场景中的“工作马”，重点强调成本、吞吐和批量生成效率。</p>
+            <p><strong>为什么重要：</strong>模型竞争正在从“效果最好”转向“谁能稳定低成本跑业务”。这对于广告、电商、内容工业化团队尤其关键。</p>
+            <p><strong>你该怎么看：</strong>如果你以后要做 AI 内容生产线，别只看 Demo 效果，应该同时盯单图成本、并发吞吐和工作流接入难度。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-green">中国 · 办公 Agent</span>
+            <h3>阿里千问上线表格 Agent，可直接生成/编辑 Excel</h3>
+            <p class="muted">来源：量子位｜时间：2026-04-14 10:48</p>
+            <p><strong>发生了什么：</strong>用户可在对话中生成、修改并导出真实 Excel，支持联网检索与多种文件输入，Agent 在沙箱内执行代码完成表格任务。</p>
+            <p><strong>为什么重要：</strong>这是典型的“从回答升级到交付产物”。办公场景很高频，且天然有付费意愿，是 Agent 落地最快的方向之一。</p>
+            <p><strong>你该怎么看：</strong>这类 Agent 很适合做内容整理、报表、运营分析和轻数据处理。如果你以后做个人工作流，也值得优先接入这类能力。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card strong">
+        <h2>二、Agent 动态</h2>
+        <div class="list">
+          <div class="item">
+            <span class="badge b-purple">全球 · 开发者 Agent 工作台</span>
+            <h3>Claude Code 重设计，明确瞄准多 Agent 协作</h3>
+            <p class="muted">来源：The Verge｜时间：2026-04-15 04:31 CST</p>
+            <p><strong>发生了什么：</strong>新界面增加会话管理、可拖拽工作区、内置终端和文件编辑器，目标是让用户更容易并行处理多个 AI 编码任务。</p>
+            <p><strong>为什么重要：</strong>竞争焦点正在从“模型会不会写代码”转向“一个人能否顺畅管理多个 Agent”。未来的护城河会落在编排、可视化、记忆和协作效率上。</p>
+            <p><strong>你该怎么看：</strong>如果你想提升 AI 辅助开发效率，之后要盯的不是单次回答质量，而是多任务管理、上下文复用和执行可控性。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-green">中国 · Agent 平台化</span>
+            <h3>扣子 2.5 一次补齐云电脑、云手机、长期记忆、邮箱与 Agent World</h3>
+            <p class="muted">来源：量子位 / 扣子官网｜时间：2026-04-12 ~ 2026-04-14</p>
+            <p><strong>发生了什么：</strong>扣子从单点能力升级成更完整的 Agent 平台：包含设备、记忆、文件、日程、邮箱、编程与技能生态。</p>
+            <p><strong>为什么重要：</strong>这意味着国内厂商在抢“Agent 操作系统”而不只是聊天入口。长期看，这种整合型平台更容易形成网络效应和开发者生态。</p>
+            <p><strong>你该怎么看：</strong>如果你以后要做面向个人/团队的 AI 助手，记忆、文件系统、外部工具和持续运行能力会比单纯模型调用更重要。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-yellow">全球 · 企业办公 Agent</span>
+            <h3>微软继续推进更具动作执行能力的企业 Agent</h3>
+            <p class="muted">来源：TechCrunch｜时间：2026-04-13</p>
+            <p><strong>发生了什么：</strong>微软被曝在 Microsoft 365 Copilot 中测试更接近 OpenClaw 风格的任务执行型 Agent，并叠加企业安全治理能力。</p>
+            <p><strong>为什么重要：</strong>企业市场不会只买“能回答”的 Copilot，而会买“能执行且可审计”的 Agent。安全与治理会成为企业 Agent 竞争胜负手。</p>
+            <p><strong>你该怎么看：</strong>未来 B 端 Agent 产品会越来越像“自动执行系统”而不是“聊天机器人”。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card strong">
+        <h2>三、GitHub 高星项目推荐</h2>
+        <div class="list">
+          <div class="item">
+            <span class="badge b-cyan">今日推荐 1</span>
+            <h3><a href="https://github.com/microsoft/markitdown">microsoft/markitdown</a></h3>
+            <p><strong>定位：</strong>把多种文件内容转换成 Markdown，方便做 RAG、知识库和 Agent 输入。</p>
+            <p><strong>为什么值得看：</strong>这类“脏活累活”型基础工具，往往比花哨 Agent Demo 更有长期价值。谁掌握稳定的数据摄入，谁就更容易把 AI 工作流做深。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-purple">今日推荐 2</span>
+            <h3><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></h3>
+            <p><strong>定位：</strong>给 Claude Code 做跨会话记忆和上下文压缩复用。</p>
+            <p><strong>为什么值得看：</strong>Agent 真正难点之一是记忆和长期任务连续性。这个方向非常关键，适合你长期关注。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-green">今日推荐 3</span>
+            <h3><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></h3>
+            <p><strong>定位：</strong>通用 Agent 框架 / 平台。</p>
+            <p><strong>为什么值得看：</strong>不是单纯 Prompt 包，而是更完整的 Agent 运行层；如果你关心 AI 助手、自动化执行、多任务编排，这类项目更值得长期追。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-yellow">观察项</span>
+            <h3><a href="https://github.com/forrestchang/andrej-karpathy-skills">forrestchang/andrej-karpathy-skills</a></h3>
+            <p><strong>定位：</strong>Claude Code 行为优化的技能/提示词集合。</p>
+            <p><strong>判断：</strong>热度很高，适合吸收思路，但更像“高质量战术总结”，不一定是长期壁垒本身。适合看，不适合神化。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card strong">
+        <h2>四、公司动作 / 融资</h2>
+        <div class="list">
+          <div class="item">
+            <span class="badge b-purple">全球 · 基础设施</span>
+            <h3>Meta 扩大与 Broadcom 合作，共同开发多代 AI 芯片</h3>
+            <p class="muted">来源：Meta Newsroom｜时间：2026-04-14</p>
+            <p><strong>为什么重要：</strong>这代表超级平台不愿长期完全依赖外部 GPU 供给，而是在芯片、封装、网络上自建长期能力。未来 AI 成本曲线会越来越依赖基础设施而不是单纯模型优化。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-green">中国 · 多智能体创业</span>
+            <h3>明日新程 4 个多月连续完成两轮融资，押注 Harness 群体多智能体</h3>
+            <p class="muted">来源：量子位｜时间：2026-04-14 13:39</p>
+            <p><strong>为什么重要：</strong>资本关注点已开始从底座模型扩散到多智能体编排、上下文管理和长任务稳定性，这会催生一批 Agent 中间层公司。</p>
+          </div>
+          <div class="item">
+            <span class="badge b-cyan">全球 · 垂直能力布局</span>
+            <h3>OpenAI 收购 AI 个人理财初创 Hiro</h3>
+            <p class="muted">来源：TechCrunch｜时间：2026-04-13</p>
+            <p><strong>为什么重要：</strong>这类交易往往说明头部模型公司在补垂直领域人才与场景能力。金融、办公、搜索等高价值场景，可能会更快被纳入通用助手生态。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>五、延伸深读：今天真正值得盯的 3 条主线</h2>
+        <ul>
+          <li><strong>入口之争：</strong>Chrome Skills 说明“浏览器=Agent 调度入口”的逻辑已经很明确。</li>
+          <li><strong>交付之争：</strong>表格 Agent、企业 Copilot、云设备 Agent，都在抢“帮你把任务做完”的位置。</li>
+          <li><strong>基础设施之争：</strong>Meta 芯片动作提醒我们，真正长期利润可能不在模型层，而在算力、入口、数据与工作流。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>六、信息来源</h2>
+        <p class="muted">本期综合参考：The Verge、TechCrunch、Google Blog、Meta Newsroom、量子位 QBitAI、扣子官网、GitHub Trending / 官方仓库页。</p>
+      </div>
+    </section>
+
+    <div class="footer">这是网页链接版样例：目标是让你在微信里点开直接看正文，而不是只看一张图。</div>
+  </div>
+</body>
+</html>
